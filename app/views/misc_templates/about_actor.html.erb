@@ -1,0 +1,149 @@
+ <h1>
+  Actor #<%= @actor_id.id %> details
+</h1>
+
+<a href="/actors" class="btn btn-block btn-outline-secondary">
+  Go back
+</a>
+
+&nbsp;|&nbsp;
+
+<a href="/delete_actor/504" class="btn btn-block btn-outline-secondary">
+  Delete actor
+  <small>(Building this link is not required. It's an optional stretch goal; but, you have the tools if you want to give it a try.)</small>
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @actor_id.name %>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+    <%= @actor_id.dob %>
+  </dd>
+
+  <dt>
+    Bio
+  </dt>
+  <dd>
+    <%= @actor_id.bio %>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src="http://robohash.org/<%= @actor_id.name%>?set=set7">
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words (@actor_id.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words (@actor_id.updated_at) %> ago
+  </dd>
+</dl>
+
+<hr>
+
+<h2>Filmography</h2>
+
+<table border="1">
+  <tr>
+
+
+    <th>
+      Title
+    </th>
+
+    <th>
+      Year
+    </th>
+
+    <th>
+      Director
+    </th>
+
+    <th>
+      Character name
+    </th>
+
+    <th>
+    </th>
+
+
+    
+  </tr>
+
+<%  @list_of_characters.all.each do |char| %>
+     <% if  @actor_id.id  == char.actor_id %>
+   
+
+  
+
+    <tr>
+      <td>                
+
+      <%= @list_of_movies.title  %>
+      
+     
+      </td>
+
+      <td>
+        <%= @list_of_movies.year  %>
+      </td>
+
+      <td>
+    
+ 
+ 
+ <%  @list_of_directors.all.each do |dir| %>
+     <% if @list_of_movies.director_id == dir.id %>
+     <%= dir.name %>
+     <% else %>
+     
+     <% end %>
+
+ <% end %>
+
+<!--
+      <% id =  0 %> 
+      <% x =  0 %> 
+-->
+         
+      </td>
+
+      <td>
+      <%= char.name  %>
+        
+      </td>
+
+      <td>
+        <a href="/movies/<%= char.movie_id %>">
+          Show details
+        </a>
+      </td>
+    </tr>
+</table>
+
+   <% else %>
+     
+     <% end %>
+
+ <% end %>
+<% id =  0 %> 

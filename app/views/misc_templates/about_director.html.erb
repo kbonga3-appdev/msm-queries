@@ -1,0 +1,99 @@
+<h1>
+  Director #<%= @director_id.id %> details
+</h1>
+
+<a href="/directors" class="btn btn-block btn-outline-secondary">
+  Go back
+</a>
+
+&nbsp;|&nbsp;
+
+<a href="/delete_director/<%= @director_id.id %>" class="btn btn-block btn-outline-secondary">
+  Delete director
+  <small>(Building this link is not required. It's an optional stretch goal; but, you have the tools if you want to give it a try.)</small>
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%= @director_id.name %>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+    <%= @director_id.dob %>
+  </dd>
+
+  <dt>
+    Bio
+  </dt>
+  <dd>
+  <%= @director_id.bio %>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+  <!--
+    <img src="https://image.tmdb.org/t/p/w500/6U1eHg30snkOhSM9WJT2asAesR9.jpg" style="width:250px;">
+    -->
+    <%= @director_id.image %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+
+    <%= time_ago_in_words(@director_id.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words (@director_id.updated_at) %> ago
+  </dd>
+</dl>
+
+
+<h2>Filmography</h2>
+
+<table border="1">
+<% @filmography.each do |films| %>
+  <tr>
+      <td>
+         <%= films.id%>
+      </td>
+
+      <td>
+        <img src="http://robohash.org/<%= films.image%>?set=set7">
+      </td>
+
+      <td>
+         <%= films.title%>
+      </td>
+
+      <td>
+         <%= films.year%>
+      </td>
+
+      <td>
+         <%= films.director_id%>
+      </td>
+
+      <td>
+         <a href="/movies/<%= films.id%>">
+         Show details
+         </a>
+      </td> 
+
+  </tr>
+<% end %>

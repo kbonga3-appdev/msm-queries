@@ -1,0 +1,32 @@
+yooooooo
+<h1>List of all directors</h1>
+
+
+<!--
+
+
+
+<%= Director.all %>
+-->
+
+<table border="1">
+<% @list_of_directors.all.each do |var| %>
+<tr>
+<td> <%= var.id %>,  </td>
+
+<td>
+<img src="http://robohash.org/<%= var.name %>" >
+</td>
+
+<td> <%= var.name %>, </td>
+<td> <%= var.dob %>,  </td>
+
+
+<td> <a href="/directors/<%=var.id%>">
+        Show details
+      </a>  </td>
+
+
+</tr>
+<% end %>
+</table>
