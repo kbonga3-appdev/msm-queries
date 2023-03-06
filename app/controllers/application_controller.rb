@@ -52,6 +52,7 @@ def about_director
 
   @director_id = Director.where({ :id => directors_id}).at(0)
    @filmography = Movie.where({ :director_id => @director_id.id})
+
   # @filmography = Movie.where({ :director_id => directors_id})
   render({ :template => "misc_templates/about_director.html.erb"})
 
@@ -81,14 +82,20 @@ def about_actors
   actors_id = params.fetch("id_actors")
   @actor_id = Actor.where({ :id => actors_id}).at(0)
 
-
-  @list_of_characters = Character.all
-  @list_of_movies = Movie.where({ :id => actors_id}).at(0)
-  @list_of_directors = Director.all
-  
-  # @director_id = Director.where({ :id => actors_id}).at(0)
   #  @filmography = Movie.where({ :director_id => @director_id.id})
-  # @filmography = Movie.where({ :director_id => directors_id})
+
+
+   @list_of_characters = Character.all
+  # @list_of_characters = Character.where({ :actor_id => @actor_id })
+
+  # @movie = Movie.where(:id=> actors_id).first 
+
+  @list_of_movies = Movie.where({ :id => actors_id}).at(0)
+
+  @list_of_directors = Director.all
+  @list_of_actor = Actor.all
+  
+  
   render({ :template => "misc_templates/about_actor.html.erb"})
 
     
